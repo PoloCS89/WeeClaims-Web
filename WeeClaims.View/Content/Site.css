@@ -1,0 +1,134 @@
+﻿body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registro-wrapper {
+    width: 100%; 
+    max-width: 1200px; 
+    margin: auto;
+    border-radius: 20px;
+    background-color: #fff; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+}
+
+.registro-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    width: 100%;
+    flex-direction: row; 
+    border-radius: 20px; 
+}
+
+.registro-logo {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f9;
+    padding: 20px;
+    border-top-left-radius: 20px; 
+    border-bottom-left-radius: 20px;
+}
+
+    .registro-logo img {
+        max-width: 100%;
+        height: auto;
+        max-height: 300px; 
+    }
+
+.registro-form {
+    flex-basis: 50%; 
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top-right-radius: 20px; 
+    border-bottom-right-radius: 20px;
+}
+
+h2 {
+    color: #1a73e8;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+    .form-control:focus {
+        outline: none;
+        border-color: #1a73e8;
+    }
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #1a73e8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .btn:hover {
+        background-color: #1665c1;
+    }
+
+a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+
+@media screen and (max-width: 768px) {
+    .registro-container {
+        flex-direction: column; 
+    }
+
+    .registro-logo {
+        flex-basis: 100%; 
+        padding: 10px;
+        border-top-right-radius: 0px; 
+        border-bottom-left-radius: 0px; 
+    }
+
+        .registro-logo img {
+            max-height: 200px; 
+        }
+
+    .registro-form {
+        flex-basis: 100%; 
+        padding: 20px;
+        border-radius: 0px; 
+    }
+}

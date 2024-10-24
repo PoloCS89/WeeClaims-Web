@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Captura de Datos";
+}
+
+<div class="registro-wrapper">
+    <div class="registro-container">
+        <!-- Columna izquierda para el logotipo -->
+        <div class="registro-logo">
+            <img src="~/images/weeclaims.png" alt="Logotipo" />
+        </div>
+
+        <!-- Columna derecha para el formulario -->
+        <div class="registro-form">
+            <h2 id="tituloRegistroPersona" style="display:flex;">Registro persona</h2>
+            <form id="registroForm" method="post" novalidate>
+                <div class="form-group">
+                    <label for="nombreCompania">Nombre de la compañía</label>
+                    <input type="text" id="nombreCompania" name="nombreCompania" class="form-control" required />
+                    <span class="error-message" id="errorNombreEmpresa"></span>
+                </div>
+                <div class="form-group">
+                    <label for="nombrePersonaContacto">Nombre de la persona para contacto</label>
+                    <input type="text" id="nombrePersonaContacto" name="nombrePersonaContacto" class="form-control" required />
+                    <span class="error-message" id="errorNombreContacto"></span>
+                </div>
+                <div class="form-group">
+                    <label for="correoElectronico">Correo electrónico</label>
+                    <input type="email" id="correoElectronico" name="correoElectronico" class="form-control" required />
+                    <span class="error-message" id="errorCorreo"></span>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-control" pattern="^[0-9]{10}$" required />
+                    <span class="error-message" id="errorTelefono"></span>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="AceptaTerminos" name="AceptaTerminos" required />
+                    <label for="AceptaTerminos">He leído y acepto el <a href="#">Aviso de privacidad/Términos y condiciones</a></label>
+                    <span class="error-message" id="errorTerminos"></span>
+                </div>
+                <div class="form-group">
+                    <button id="continuarBtn" type="submit" class="btn btn-primary">Continuar</button>
+                </div>
+            </form>
+
+            <style>
+
+                #tablaDatos {
+                    width: 50%;
+                    transition: width 0.5s ease;
+                }
+
+
+                    #tablaDatos.mostrar {
+                        width: 80%;
+                    }
+            </style>
+
+            <!-- Div oculto inicialmente para mostrar los datos guardados en una tabla -->
+            <h2 id="tituloTablaRegistros" style="display:none;">Registros</h2>
+            <div class="registro-container" id="tablaDatos" style="display:none;">
+                <table id="datosTabla" border="1">
+                    <thead>
+                        <tr>
+                            <th>Compañia</th>
+                            <th>Contacto</th>
+                            <th>Correo</th>
+                            <th>Teléfono</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se llenarán los datos -->
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <button id="regresarBtn" class="btn btn-primary">Regresar</button>
+
+                </div>
+            </div>
+
+            <div id="successMessage" class="alert alert-success mt-3" style="display: none;">
+                ¡Datos enviados exitosamente!
+            </div>
+            <div id="errorMessage" class="alert alert-danger mt-3" style="display: none;">
+                Error al enviar los datos.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de guardado exitoso -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-success" id="exampleModalLabel">Datos Guardados Correctamente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p> <span id="modalNombreCompania"></span></p>
+                <p> <span id="modalNombreContacto"></span></p>
+                <p> <span id="modalCorreo"></span></p>
+                <p> <span id="modalTelefono"></span></p>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de error -->
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Cambiar el color del título a verde usando la clase text-success -->
+                <h5 class="modal-title text-danger" id="exampleModalLabel">Error</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p id="successCapturedData"></p>
+                <p id="errorCapturedData"></p>
+            </div>
+            <div class="modal-footer text-center">
+                <!-- El botón de cerrar también necesita data-dismiss="modal" -->
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<!-- Script para validaciones y guardado de datos -->
+<script src="~/Scripts/ValidacionesFormulario.js"></script>
